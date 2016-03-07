@@ -7,6 +7,10 @@ public class Checkout {
 	private HashMap<Item, Integer> quantities = new HashMap<Item, Integer>(); 
 	int count;
 	Item item1;
+	float total =0;
+	int ratio = 0;
+	//float partial =0;
+	float discount = 0;
 	public void add(Item item){
 		items.add(item);
 	}
@@ -25,10 +29,16 @@ public class Checkout {
 		}
 		for (Map.Entry<Item, Integer> entry : quantities.entrySet()){
 			item1 = entry.getKey();
+			count = entry.getValue();
+			ratio = count/entry.getValue();
+			if(item1.getRule()!=null)
+				discount = ratio*item1.getRule().getDiscount();
 			
+			total = total + (item1.getPrice()*count-discount);
+			discount = 0;
 		}
 		
 		
-		return 0;
+		return total;
 	}
 }
