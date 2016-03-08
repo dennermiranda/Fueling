@@ -15,7 +15,7 @@ public class Kata {
 		Checkout checkout = new Checkout();
 		checkout.add(item1);
 		checkout.add(item1);
-		checkout.add(item1);
+		//checkout.add(item1);
 		checkout.add(item2);
 		System.out.println(checkout.checkout());
 	}

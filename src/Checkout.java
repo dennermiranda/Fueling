@@ -30,9 +30,11 @@ public class Checkout {
 		for (Map.Entry<Item, Integer> entry : quantities.entrySet()){
 			item1 = entry.getKey();
 			count = entry.getValue();
-			ratio = count/entry.getValue();
-			if(item1.getRule()!=null)
+			
+			if(item1.getRule()!=null){
+				ratio = count/item1.getRule().getQuantity();
 				discount = ratio*item1.getRule().getDiscount();
+			}
 			
 			total = total + (item1.getPrice()*count-discount);
 			discount = 0;
